@@ -6,8 +6,31 @@ from app.database import init_db
 
 app = FastAPI(
     title="Flash Cards API",
-    description="API for Flash Cards Platform",
-    version="1.0.0"
+    description="""
+    Flash Cards Platform API documentation.
+    
+    ## Features
+    * Create and manage flash cards
+    * Retrieve flash cards individually or in bulk
+    * Update and delete flash cards
+    
+    ## Authentication
+    This API uses API key authentication. Include your API key in the request headers.
+    """,
+    version="1.0.0",
+    contact={
+        "name": "Development Team",
+        "email": "dev-team@example.com"
+    },
+    license_info={
+        "name": "MIT",
+    },
+    openapi_tags=[
+        {
+            "name": "flash-cards",
+            "description": "Operations with flash cards",
+        }
+    ]
 )
 
 # CORS middleware configuration

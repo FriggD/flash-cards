@@ -8,7 +8,10 @@ from app.api.deps import get_db
 from app.models.flash_card import FlashCard, FlashCardCreate, FlashCardUpdate
 from app.core.exceptions import NotFoundException
 
-router = APIRouter()
+router = APIRouter(
+    prefix="/flash-cards",
+    tags=["flash-cards"]
+)
 
 @router.get("/", response_model=List[FlashCard])
 async def get_flash_cards(
@@ -17,7 +20,14 @@ async def get_flash_cards(
     db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """
-    Retrieve flash cards.
+    Retrieve a list of flash cards.
+    
+    Parameters:
+    - skip: Number of records to skip (pagination)
+    - limit: Maximum number of records to return
+    
+    Returns:
+    - List of flash cards
     """
     flash_cards = await db.flash_cards.find().skip(skip).limit(limit).to_list(length=limit)
     return flash_cards
@@ -28,7 +38,16 @@ async def create_flash_card(
     db: AsyncIOMotorDatabase = Depends(get_db)
 ):
     """
-    Create new flash card.
+    Create a new flash card.
+    
+    Parameters:
+    - flash_card: Flash card data (question, answer, tags)
+    
+    Returns:
+    - Created flash card object with generated ID
+    
+    Raises:
+    - 422 Validation Error: If the request body is invalid
     """
     new_flash_card = flash_card.dict()
     result = await db.flash_cards.insert_one(new_flash_card)
@@ -40,6 +59,18 @@ async def get_flash_card(
     flash_card_id: UUID,
     db: AsyncIOMotorDatabase = Depends(get_db)
 ):
+    """
+    Retrieve a specific flash card by its ID.
+    
+    Parameters:
+    - flash_card_id: UUID of the flash card to retrieve
+    
+    Returns:
+    - Flash card object matching the ID
+    
+    Raises:
+    - 404 Not Found: If the flash card doesn't exist
+    """
     """
     Get flash card by ID.
     """
