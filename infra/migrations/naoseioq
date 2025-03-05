@@ -1,0 +1,99 @@
+Table flash_cards {
+  _id uuid
+  original_owner_id uuid
+  owner_id uuid
+
+  area_id uuid
+  category_id uuid
+  topico_id uuid
+  tags array(string)
+  pack_id uuid
+
+  front string
+  back string  
+
+  study_plans array(ids)
+  
+  created_at datetime
+  updated_at datetime
+  imported_at datetime
+}
+
+Table areas {
+  _id uuid
+  owner_id uuid
+  name string
+  description string
+  
+  created_at datetime
+  updated_at datetime
+}
+
+Table categories {
+  _id uuid
+  owner_id uuid
+  name string
+  description string
+  
+  created_at datetime
+  updated_at datetime
+}
+
+Table topic {
+  _id uuid
+  owner_id uuid
+  name string
+  description string
+  
+  created_at datetime
+  updated_at datetime
+}
+
+Table package {
+  _id uuid
+  owner_id uuid
+  name string
+  description string
+  
+  created_at datetime
+  updated_at datetime
+}
+
+Table user {
+  _id uuid
+}
+
+Table study_plans {
+  _id uuid
+  owner_id uuid
+
+  // Quantos cards o usuário já estudou nesse plano
+  studied_cards_count number
+
+  // Quantos dias o usuário está em streak de estudo
+  streak_count number  
+
+  // Número de cards que estão pendentes segundo a lógica do score
+  pending_cards number
+  
+  // Lista de cards (cópia dos cards)
+  cards array(flash_cards)
+
+  created_at datetime
+  updated_at datetime
+}
+
+Table study_session {
+  _id uuid
+  study_plan_id uuid
+
+  cards_reviewed number
+  mean_score number
+
+  forgot_count number
+  moderate_count number
+  remembered_count number
+
+  start datetime
+  end datetime
+}
