@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  PageContainer,
-  Card,
-  Form,
-  Input,
-  Button,
-  Title,
-  Link,
-} from '../components/StyledComponents';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -37,50 +28,64 @@ function Register() {
   };
 
   return (
-    <PageContainer>
-      <Card>
-        <Title>Create Account</Title>
-        <Form onSubmit={handleSubmit}>
-          <Input
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+      <div className="bg-white rounded-lg p-8 shadow-md w-full max-w-md">
+        <h1 className="text-2xl font-bold text-center mb-6">Create Account</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <input
             type="text"
             name="name"
             placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
             required
+            className="p-3 border-2 border-[#8E9AAF] rounded focus:border-[#6B4E71] focus:outline-none text-base"
           />
-          <Input
+          <input
             type="email"
             name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
             required
+            className="p-3 border-2 border-[#8E9AAF] rounded focus:border-[#6B4E71] focus:outline-none text-base"
           />
-          <Input
+          <input
             type="password"
             name="password"
             placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             required
+            className="p-3 border-2 border-[#8E9AAF] rounded focus:border-[#6B4E71] focus:outline-none text-base"
           />
-          <Input
+          <input
             type="password"
             name="confirmPassword"
             placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
             required
+            className="p-3 border-2 border-[#8E9AAF] rounded focus:border-[#6B4E71] focus:outline-none text-base"
           />
-          <Button type="submit">Register</Button>
-        </Form>
-        <p style={{ marginTop: '1rem', textAlign: 'center' }}>
+          <button
+            type="submit"
+            className="bg-[#6B4E71] text-white p-3 rounded text-base cursor-pointer transition-colors hover:bg-[#9B6B9D]"
+          >
+            Register
+          </button>
+        </form>
+        <p className="mt-4 text-center">
           Already have an account?{' '}
-          <Link onClick={() => navigate('/login')}>Login</Link>
+          <button
+            onClick={() => navigate('/login')}
+            className="text-[#6B4E71] hover:text-[#9B6B9D] underline"
+          >
+            Login
+          </button>
         </p>
-      </Card>
-    </PageContainer>
+      </div>
+    </div>
   );
 }
 

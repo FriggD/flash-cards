@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --space-cadet: #2d275fff;
   --periwinkle: #cebfe9ff;
