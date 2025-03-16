@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../../components/StyledComponents';
 import { HomeContainer, Header, Title, Grid, Card, CardTitle, CardContent } from './Home.styles';
 import FlashCard from '../../components/FlashCard/FlashCard';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   // Dummy data for demonstration
@@ -10,12 +11,20 @@ function Home() {
     { id: 2, title: 'React Fundamentals', cards: 15 },
     { id: 3, title: 'CSS Tips & Tricks', cards: 25 },
   ];
+  
+  const navigate = useNavigate();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    // TODO: Implement logout logic
+    navigate('/login');
+  };
 
   return (
     <HomeContainer>
       <Header>
         <Title>My Flashcards</Title>
         <Button>Create New Set</Button>
+        <Button onClick={handleLogout}>LogOut</Button>
       </Header>
       <Grid>
         {flashcardSets.map((set) => (
