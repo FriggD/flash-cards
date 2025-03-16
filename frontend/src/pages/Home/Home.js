@@ -2,6 +2,10 @@ import React from 'react';
 import { Button } from '../../components/StyledComponents';
 import { HomeContainer, Header, Title, Grid, Card, CardTitle, CardContent } from './Home.styles';
 import FlashCard from '../../components/FlashCard/FlashCard';
+import Column from '../../components/Column/Column';
+import Row from '../../components/Row/Row';
+
+import StartStudyingWidget from '../../components/widgets/StartStudyingWidget/StartStudyingWidget';
 
 function Home() {
   // Dummy data for demonstration
@@ -13,10 +17,22 @@ function Home() {
 
   return (
     <HomeContainer>
+
+
       <Header>
         <Title>My Flashcards</Title>
         <Button>Create New Set</Button>
+
       </Header>
+
+      <Column>
+        <Row>
+          <StartStudyingWidget></StartStudyingWidget>
+        </Row>
+
+      </Column>
+
+      {/*
       <Grid>
         {flashcardSets.map((set) => (
           <Card key={set.id}>
@@ -32,7 +48,7 @@ function Home() {
       </Header>
       <Grid>
         <FlashCard frente="valoraí" verso="valor" area="Frontend" categoria="Javascript"></FlashCard>
-      </Grid>
+      </Grid> */}
     </HomeContainer>
   );
 }

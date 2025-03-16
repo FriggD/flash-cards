@@ -1,0 +1,29 @@
+.container {
+    text-align: center;
+    max-width: 700px;
+    background-color: #fefefe;
+    padding: 12px;
+    color: rgb(45, 39, 95);
+    border-radius: 8px;
+    box-shadow: 0 5px 12px solid fefefe;
+}
+
+.button {
+    padding: 1.4em;
+    text-align: center;
+}
+
+.button button {
+    background-color: var(--royal-purple);
+    color: white;
+    padding: 0.8em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;    
+}
+
+.button button:hover {
+    background-color: var(--amethyst);
+}
