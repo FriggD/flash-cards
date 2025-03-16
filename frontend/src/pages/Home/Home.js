@@ -6,6 +6,7 @@ import Column from '../../components/Column/Column';
 import Row from '../../components/Row/Row';
 
 import StartStudyingWidget from '../../components/widgets/StartStudyingWidget/StartStudyingWidget';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   // Dummy data for demonstration
@@ -14,23 +15,36 @@ function Home() {
     { id: 2, title: 'React Fundamentals', cards: 15 },
     { id: 3, title: 'CSS Tips & Tricks', cards: 25 },
   ];
+  
+  const navigate = useNavigate();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    // TODO: Implement logout logic
+    navigate('/login');
+  };
 
   return (
     <HomeContainer>
 
 
       <Header>
-        <Title>My Flashcards</Title>
-        <Button>Create New Set</Button>
+        <Title>Logo Aqui</Title>
 
+        <Button onClick={handleLogout}>LogOut</Button>
       </Header>
 
       <Column>
         <Row>
           <StartStudyingWidget></StartStudyingWidget>
         </Row>
-
       </Column>
+
+
+      
+      <Header>
+        <Title>My collection</Title>
+        <Button>Create New Set</Button>
+      </Header>
 
       {/*
       <Grid>

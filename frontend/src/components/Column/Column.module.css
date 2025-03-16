@@ -1,5 +1,6 @@
 .column {
     display: flex;
     flex-direction: column;
-    gap: 1em;    
+    gap: 1em;  
+    margin: 1em;
 }
