@@ -54,18 +54,18 @@ export const PageContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.amethyst};
   margin-bottom: 2rem;
   font-size: 2rem;
   text-align: center;
 `;
 
 export const Link = styled.a`
-  color: ${props => props.theme.colors.periwinkle};
+  color: ${props => props.theme.colors.royalPurple};
   text-decoration: none;
   transition: color 0.3s;
 
   &:hover {
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.periwinkle};
   }
 `;
